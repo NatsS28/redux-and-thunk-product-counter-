@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { decrement, increament } from './actions';
 import './App.css';
 
 function App() {
+
+    const dispatch = useDispatch();
+
+    const data = useSelector(state => state.performOperation)
+
+    
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+          Redux-tut <br></br><br></br>
+          <div className='container'>
+              <button className='increament' onClick={() => dispatch(increament(data[0]))}>+</button>
+              <div>{data[0]}</div>
+              <button className='decrement' onClick={()=>dispatch(decrement(data[0]))}>-</button>
+          </div>
+          <div>{data[1]}</div>
     </div>
   );
 }
